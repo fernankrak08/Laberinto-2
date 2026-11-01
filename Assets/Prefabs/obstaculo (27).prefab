@@ -140,4 +140,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42e321a95061051418a7efd05b36cd4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rotacion
-  rotacionY: 500
+  rotacionY: 150
