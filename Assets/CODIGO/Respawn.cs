@@ -1,4 +1,5 @@
 
+using TMPro;
 using UnityEngine;
 
 public class Respawn : MonoBehaviour
@@ -8,8 +9,14 @@ public class Respawn : MonoBehaviour
     [SerializeField]
     GameObject pantallaDerrota;
 
-    float tiempoPantalla = 1f;
+    [SerializeField]
+    TextMeshProUGUI textLabelTime;
+
+    float tiempoPantalla = 2f;
     bool contandoTiempo = false;
+
+    float tiempoDePartida = 0f;
+    bool estaJugando = true;
 
     private void Start()
     {
@@ -18,15 +25,6 @@ public class Respawn : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position.y < -1 || Input.GetKeyDown(KeyCode.R))
-        {
-            transform.position = respawn.transform.position;
-            print("Vuelve a empezar");
-
-            pantallaDerrota.SetActive(true);
-            tiempoPantalla = 1f;
-            contandoTiempo = true;
-        }
 
         if (contandoTiempo == true)
         {
@@ -37,6 +35,27 @@ public class Respawn : MonoBehaviour
                 pantallaDerrota.SetActive(false);
                 contandoTiempo = false;
             }
+        }
+
+        if (estaJugando == true)
+        {
+            tiempoDePartida += Time.deltaTime;
+        }
+        
+
+        if (transform.position.y < -1 || Input.GetKeyDown(KeyCode.R))
+        {
+            transform.position = respawn.transform.position;
+            print("Vuelve a empezar");
+
+            pantallaDerrota.SetActive(true);
+            tiempoPantalla = 1f;
+            contandoTiempo = true;
+
+            
+            textLabelTime.text = tiempoDePartida.ToString();
+           
+
         }
     }
 }
