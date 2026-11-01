@@ -1,22 +1,42 @@
+
 using UnityEngine;
 
 public class Respawn : MonoBehaviour
 {
     public GameObject respawn;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    [SerializeField]
+    GameObject pantallaDerrota;
+
+    float tiempoPantalla = 1f;
+    bool contandoTiempo = false;
+
+    private void Start()
+    {
+        pantallaDerrota.SetActive(false);
+    }
+
     private void Update()
     {
-
-        if (transform.position.y < -1)
+        if (transform.position.y < -1 || Input.GetKeyDown(KeyCode.R))
         {
             transform.position = respawn.transform.position;
             print("Vuelve a empezar");
+
+            pantallaDerrota.SetActive(true);
+            tiempoPantalla = 1f;
+            contandoTiempo = true;
         }
 
-        if(Input.GetKey(KeyCode.R))
+        if (contandoTiempo == true)
         {
-            transform.position = respawn.transform.position;
-            print("Vuelve a empezar");
+            tiempoPantalla -= Time.deltaTime;
+
+            if (tiempoPantalla <= 0f)
+            {
+                pantallaDerrota.SetActive(false);
+                contandoTiempo = false;
+            }
         }
     }
 }
