@@ -54,7 +54,6 @@ public class Respawn : MonoBehaviour
 
             
             textLabelTime.text = tiempoDePartida.ToString();
-           
 
         }
     }

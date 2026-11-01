@@ -10,7 +10,7 @@ public class ColicionPared : MonoBehaviour
 
     bool paredRoja = false;
 
-    float tiempoEnRojo = 5f;
+    float tiempoEnRojo = 3f;
 
     private void Update()
     {
@@ -22,7 +22,7 @@ public class ColicionPared : MonoBehaviour
             {
                 gameObject.GetComponent<MeshRenderer>().material = materialPorDefecto;
                 paredRoja = false;
-                tiempoEnRojo = 5f;
+                tiempoEnRojo = 3f;
             }
         }
     }
