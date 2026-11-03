@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class Respawn : MonoBehaviour
 {
-    public GameObject respawn;
+    [SerializeField]
+    GameObject respawn;
 
     [SerializeField]
     GameObject pantallaDerrota;
 
     [SerializeField]
-    TextMeshProUGUI textLabelTime;
+    TextMeshProUGUI textLabelTime1;
+
+    [SerializeField]
+    TextMeshProUGUI textLabelTime2;
 
     float tiempoPantalla = 2f;
     bool contandoTiempo = false;
@@ -40,8 +44,11 @@ public class Respawn : MonoBehaviour
         if (estaJugando == true)
         {
             tiempoDePartida += Time.deltaTime;
+            int minutos = Mathf.FloorToInt(tiempoDePartida / 60);
+            int segundos = Mathf.FloorToInt(tiempoDePartida % 60);
+
+            textLabelTime2.text = string.Format("{0:00}:{1:00}", minutos, segundos);
         }
-        
 
         if (transform.position.y < -1 || Input.GetKeyDown(KeyCode.R))
         {
@@ -52,9 +59,13 @@ public class Respawn : MonoBehaviour
             tiempoPantalla = 1f;
             contandoTiempo = true;
 
-            
-            textLabelTime.text = tiempoDePartida.ToString();
+            textLabelTime1.text = tiempoDePartida.ToString("f2");
 
+            int minutos = Mathf.FloorToInt(tiempoDePartida / 60);
+            int segundos = Mathf.FloorToInt(tiempoDePartida % 60);
+
+            textLabelTime2.text = string.Format("{0:00}:{1:00}", minutos, segundos);
         }
     }
 }
+
