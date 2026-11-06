@@ -32,10 +32,11 @@ public class movimiento : MonoBehaviour
         {
             transform.position += Vector3.back * velocidad;
         }
-
+/*
         if (Input.GetKey(KeyCode.Space))
         {
             transform.position += Vector3.up * velocidad;
         }
+*/
     }
 }
